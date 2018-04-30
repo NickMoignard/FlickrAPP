@@ -83,7 +83,7 @@ class Flickr {
           OperationQueue.main.addOperation({
             completion(nil, APIError)
           })
-          return
+          return2   
         }
         
         var flickrPhotos = [FlickrPhoto]()
