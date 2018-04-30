@@ -8,16 +8,34 @@
 
 import UIKit
 
-fileprivate let reuseIdentifier = "imageCell"
 
-/// Set padding size around images
-fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
 class ImageCollectionViewController: UICollectionViewController {
-
+    let networkManager = FlickrNetworkManager()
+    
+    
+    fileprivate let reuseIdentifier = "imageCell"
+    /// Set padding size around images
+    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate var previousSearches: [FlickrSearchResults] = []
+    fileprivate let itemsPerRow: CGFloat = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        networkManager.searchFlickr("dad") {
+            results, error in
+            if let results = results {
+                self.previousSearches.insert(results, at: 0)
+                self.collectionView?.reloadData()
+                
+                
+                for photo in results.searchResults {
+                    print(photo.title, photo.photoID)
+                }
+                
+            }
+            
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,20 +63,24 @@ class ImageCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        if previousSearches.count >= 1 {
+            return previousSearches[0].searchResults.count
+        } else {
+            return 0
+        }
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        // Configure the cell
+        cell.backgroundColor = UIColor.purple
     
         return cell
     }
@@ -95,3 +117,59 @@ class ImageCollectionViewController: UICollectionViewController {
     */
 
 }
+
+extension ImageCollectionViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        textField.addSubview(activityIndicator)
+        activityIndicator.frame = textField.bounds
+        activityIndicator.startAnimating()
+        
+        networkManager.searchFlickr(textField.text!) {
+            results, error in
+            activityIndicator.removeFromSuperview()
+            
+            if let error = error {
+                print("error encounted \(error)")
+                return
+            }
+            
+            if let results = results {
+                self.previousSearches.insert(results, at: 0)
+                self.collectionView?.reloadData()
+                
+   
+                for photo in results.searchResults {
+                    print(photo.title, photo.photoID)
+                }
+
+            }
+        }
+        textField.text = nil
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension ImageCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+}
+
+
+

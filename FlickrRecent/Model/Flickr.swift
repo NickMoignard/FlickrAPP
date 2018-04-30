@@ -1,5 +1,5 @@
 
-	
+/*
 import UIKit
 
 let apiKey = "411c1902b10bed4c6d2c6d6455a82833"
@@ -83,7 +83,7 @@ class Flickr {
           OperationQueue.main.addOperation({
             completion(nil, APIError)
           })
-          return2   
+          return
         }
         
         var flickrPhotos = [FlickrPhoto]()
@@ -136,3 +136,4 @@ class Flickr {
     return url
   }
 }
+*/

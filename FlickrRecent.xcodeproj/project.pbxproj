@@ -11,7 +11,6 @@
 		32D9AA2F333650D717CF1BAA /* Pods_FlickrRecent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78E16AD06E27AD182661D09 /* Pods_FlickrRecent.framework */; };
 		B377CEB42095906E004F2242 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEB32095906E004F2242 /* ImageCollectionViewController.swift */; };
 		B377CEB620959495004F2242 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEB520959495004F2242 /* NetworkManager.swift */; };
-		B377CEB82096C16D004F2242 /* FlickrFiles in Resources */ = {isa = PBXBuildFile; fileRef = B377CEB72096C16C004F2242 /* FlickrFiles */; };
 		B377CEBD2096C9C6004F2242 /* FlickrSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEBC2096C9C6004F2242 /* FlickrSearchResults.swift */; };
 		B377CEBF2096C9C9004F2242 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEBE2096C9C8004F2242 /* FlickrPhoto.swift */; };
 		B377CEC12096C9CB004F2242 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEC02096C9CB004F2242 /* Flickr.swift */; };
@@ -50,7 +49,6 @@
 		B103A72653EC2D7215962664 /* Pods_FlickrRecentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrRecentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B377CEB32095906E004F2242 /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 		B377CEB520959495004F2242 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		B377CEB72096C16C004F2242 /* FlickrFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FlickrFiles; sourceTree = "<group>"; };
 		B377CEBC2096C9C6004F2242 /* FlickrSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrSearchResults.swift; sourceTree = "<group>"; };
 		B377CEBE2096C9C8004F2242 /* FlickrPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
 		B377CEC02096C9CB004F2242 /* Flickr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				B3EFF9892093FFF000B27BD1 /* FlickrRecentTests */,
 				B3EFF9942093FFF000B27BD1 /* FlickrRecentUITests */,
 				B3EFF9702093FFED00B27BD1 /* Products */,
-				B377CEB72096C16C004F2242 /* FlickrFiles */,
 				905D64294C612E357227CC80 /* Pods */,
 				EAE18BA8E663699BBBE41590 /* Frameworks */,
 			);
@@ -219,6 +216,7 @@
 				B3EFF96C2093FFEC00B27BD1 /* Frameworks */,
 				B3EFF96D2093FFEC00B27BD1 /* Resources */,
 				0048AC965E8D58C561EB15AC /* [CP] Embed Pods Frameworks */,
+				D871E83C04198DE6056D69F4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,6 +235,8 @@
 				B3EFF9822093FFF000B27BD1 /* Sources */,
 				B3EFF9832093FFF000B27BD1 /* Frameworks */,
 				B3EFF9842093FFF000B27BD1 /* Resources */,
+				38C2C43902CBC70E16323904 /* [CP] Embed Pods Frameworks */,
+				4ADFA9294E5D11B267380BB9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +256,8 @@
 				B3EFF98D2093FFF000B27BD1 /* Sources */,
 				B3EFF98E2093FFF000B27BD1 /* Frameworks */,
 				B3EFF98F2093FFF000B27BD1 /* Resources */,
+				B52FB3CE9B127291714AA097 /* [CP] Embed Pods Frameworks */,
+				CF195E6540F76E8F8AC5944D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,7 +318,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3EFF9802093FFF000B27BD1 /* LaunchScreen.storyboard in Resources */,
-				B377CEB82096C16D004F2242 /* FlickrFiles in Resources */,
 				B3EFF97D2093FFF000B27BD1 /* Assets.xcassets in Resources */,
 				B3EFF9782093FFED00B27BD1 /* Main.storyboard in Resources */,
 			);
@@ -347,11 +348,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlickrRecent/Pods-FlickrRecent-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +380,66 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		38C2C43902CBC70E16323904 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrRecentTests/Pods-FlickrRecentTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4ADFA9294E5D11B267380BB9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrRecentTests/Pods-FlickrRecentTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B52FB3CE9B127291714AA097 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrRecentUITests/Pods-FlickrRecentUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF195E6540F76E8F8AC5944D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrRecentUITests/Pods-FlickrRecentUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D11AE95D2CACD69F34FE61D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +456,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D871E83C04198DE6056D69F4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickrRecent/Pods-FlickrRecent-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F0968B021E091CAD619D82EB /* [CP] Check Pods Manifest.lock */ = {

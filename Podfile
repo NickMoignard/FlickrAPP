@@ -11,6 +11,7 @@ target 'FlickrRecent' do
   pod 'SwiftyJSON'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'SDWebImage'
 
   target 'FlickrRecentTests' do
     inherit! :search_paths

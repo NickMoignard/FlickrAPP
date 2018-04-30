@@ -1,5 +1,56 @@
 import UIKit
 
+
+struct FlickrPhoto {
+    
+    let photoID: String,
+        farm: Int,
+        server: String,
+        secret: String,
+        isFriend: Int,
+        owner: String,
+        title: String
+
+    
+    let networkManager = FlickrNetworkManager()
+    
+    init (photoID:String,farm:Int, server:String, secret:String, isFriend: Int = 0, owner: String = "", title:String = "") {
+        self.photoID = photoID
+        self.farm = farm
+        self.server = server
+        self.secret = secret
+        self.isFriend = isFriend
+        self.owner = owner
+        self.title = title
+    }
+    
+    func downloadImage(_ size: FlickrImageSize =  .medium, completion: (UIImage?, NSError?) -> Void) {
+         
+    }
+    
+    // MARK: - HELPER METHODS
+    
+    /**
+    Create URL to download flickr photo
+     - Parameter size: The size of image to download. Defaults to medium.
+     - Returns : URL of flickr photo
+    */
+    fileprivate func createPhotoURL(_ size: FlickrImageSize =  .medium) -> URL? {
+        if let url = URL(string: "https://farm\(self.farm).staticflickr.com/\(self.server)/\(self.photoID)_\(self.secret)_\(size.rawValue).jpg") {
+            return url
+        }
+        return nil
+    }
+    
+}
+
+// TODO: fill in different sizes
+enum FlickrImageSize: String {
+    case medium = "m"
+    case large = "b"
+}
+
+/*
 class FlickrPhoto : Equatable {
   var thumbnail : UIImage?
   var largeImage : UIImage?
@@ -81,3 +132,4 @@ class FlickrPhoto : Equatable {
 func == (lhs: FlickrPhoto, rhs: FlickrPhoto) -> Bool {
   return lhs.photoID == rhs.photoID
 }
+*/
