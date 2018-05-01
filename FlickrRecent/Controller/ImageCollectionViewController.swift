@@ -7,14 +7,14 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 
 class ImageCollectionViewController: UICollectionViewController {
     let networkManager = FlickrNetworkManager()
     
     
-    fileprivate let reuseIdentifier = "imageCell"
+    fileprivate let reuseIdentifier = "pink"
     /// Set padding size around images
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate var previousSearches: [FlickrSearchResults] = []
@@ -40,7 +40,7 @@ class ImageCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -78,11 +78,23 @@ class ImageCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+//        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pink", for: indexPath)
+        
+        let flickrPhoto = previousSearches[0].searchResults[indexPath.row]
+        
+        let pinkCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pink", for: indexPath) as! FlickrPhotoCollectionViewCell
+        pinkCell.backgroundColor = UIColor.white
+        pinkCell.layer.cornerRadius = 10
+        
+        if let url = flickrPhoto.photoURL() {
+            pinkCell.imageView.sd_setImage(with: URL(string: url.absoluteString), placeholderImage: UIImage(named: "placeholder.png"))
+        } else {
+            print("Image URL Error")
+        }
+        
+        pinkCell.titleLabel.text = flickrPhoto.title
     
-        cell.backgroundColor = UIColor.purple
-    
-        return cell
+        return pinkCell
     }
 
     // MARK: UICollectionViewDelegate

@@ -16,7 +16,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IJa-3I-FyD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P9x-Hj-lac">
                             <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -24,32 +24,53 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="pQD-zy-DRU">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="pink" reuseIdentifier="pink" id="pQD-zy-DRU" customClass="FlickrPhotoCollectionViewCell" customModule="FlickrRecent">
                                 <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBd-Pl-GYg">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="D55-Jh-QSd">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Dad is Dead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wax-PK-CZW">
-                                            <rect key="frame" x="8" y="153" width="120.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="By6-ez-dQI">
+                                            <rect key="frame" x="0.0" y="170" width="200" height="30"/>
+                                            <subviews>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a title for an image." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wax-PK-CZW">
+                                                    <rect key="frame" x="8" y="0.0" width="184" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="OKl-SN-u5u"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="wax-PK-CZW" firstAttribute="bottom" secondItem="By6-ez-dQI" secondAttribute="bottom" id="8XU-x3-mKr"/>
+                                                <constraint firstItem="wax-PK-CZW" firstAttribute="leading" secondItem="By6-ez-dQI" secondAttribute="leading" constant="8" id="l1s-Q2-svT"/>
+                                                <constraint firstAttribute="trailing" secondItem="wax-PK-CZW" secondAttribute="trailing" constant="8" id="rys-YC-nlI"/>
+                                                <constraint firstAttribute="height" secondItem="wax-PK-CZW" secondAttribute="height" id="uD1-vg-dvA"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="wax-PK-CZW" secondAttribute="bottom" constant="26" id="BdF-qJ-rWf"/>
-                                    <constraint firstItem="nBd-Pl-GYg" firstAttribute="top" secondItem="pQD-zy-DRU" secondAttribute="top" id="XSY-9p-PJH"/>
-                                    <constraint firstAttribute="trailing" secondItem="nBd-Pl-GYg" secondAttribute="trailing" id="ksV-Bx-cgZ"/>
-                                    <constraint firstItem="nBd-Pl-GYg" firstAttribute="leading" secondItem="pQD-zy-DRU" secondAttribute="leading" id="n7g-qD-Q6W"/>
-                                    <constraint firstItem="wax-PK-CZW" firstAttribute="top" secondItem="nBd-Pl-GYg" secondAttribute="bottom" constant="3" id="oqe-5I-ke1"/>
-                                    <constraint firstItem="wax-PK-CZW" firstAttribute="leading" secondItem="pQD-zy-DRU" secondAttribute="leading" constant="8" id="xES-us-DZK"/>
+                                    <constraint firstItem="D55-Jh-QSd" firstAttribute="leading" secondItem="pQD-zy-DRU" secondAttribute="leading" id="1nu-oP-Zxd"/>
+                                    <constraint firstAttribute="bottom" secondItem="D55-Jh-QSd" secondAttribute="bottom" id="6Sj-HF-yrl"/>
+                                    <constraint firstAttribute="bottom" secondItem="By6-ez-dQI" secondAttribute="bottom" id="V67-L3-76N"/>
+                                    <constraint firstAttribute="trailing" secondItem="By6-ez-dQI" secondAttribute="trailing" id="jBs-3w-iCA"/>
+                                    <constraint firstItem="By6-ez-dQI" firstAttribute="leading" secondItem="pQD-zy-DRU" secondAttribute="leading" id="k93-11-Dd4"/>
+                                    <constraint firstAttribute="trailing" secondItem="D55-Jh-QSd" secondAttribute="trailing" id="wi2-fa-kwL"/>
+                                    <constraint firstItem="D55-Jh-QSd" firstAttribute="top" secondItem="pQD-zy-DRU" secondAttribute="top" id="x47-2F-PtR"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="D55-Jh-QSd" id="uiL-PE-nMO"/>
+                                    <outlet property="titleLabel" destination="wax-PK-CZW" id="SMR-1v-KOY"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -94,4 +115,7 @@
             <point key="canvasLocation" x="930" y="149"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder" width="250" height="250"/>
+    </resources>
 </document>

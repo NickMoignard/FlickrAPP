@@ -35,7 +35,7 @@ struct FlickrPhoto {
      - Parameter size: The size of image to download. Defaults to medium.
      - Returns : URL of flickr photo
     */
-    fileprivate func createPhotoURL(_ size: FlickrImageSize =  .medium) -> URL? {
+    func photoURL(_ size: FlickrImageSize =  .medium) -> URL? {
         if let url = URL(string: "https://farm\(self.farm).staticflickr.com/\(self.server)/\(self.photoID)_\(self.secret)_\(size.rawValue).jpg") {
             return url
         }
