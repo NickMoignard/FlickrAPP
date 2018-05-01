@@ -9,11 +9,12 @@ fileprivate let secret = "d0176a1e2ac288b5"
 ///
 class FlickrNetworkManager {
 
+     let dateFormatter = DateFormatter()
     
     
     /**
     Get images from Flickr given a search term
-     - Parameter searchTerm :
+     - Parameter searchTerm :"yyyy-MM-dd' 'HH:mm:ss"
      - Parameter completion :
      - Parameter results :
      - Parameter error :
@@ -29,13 +30,13 @@ class FlickrNetworkManager {
                     
                     completion(searchResults, nil)
                 } else {
-                    print("error")
+                    print("Error")
                     completion(nil, NSError(domain: "DAD", code: 69, userInfo: nil) )
                 }
             }
                 
         } else {
-            print("error")
+            print("eRror")
         }
         
 
@@ -51,21 +52,39 @@ class FlickrNetworkManager {
     /**
     */
     fileprivate func parseSearchResponse(_ data: DataResponse<Data>) -> [FlickrPhoto]? {
+        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+        
+        
         var returnArray: [FlickrPhoto] = []
         if let data = data.data {
             let json = JSON(data:data)
             if let resultsDict = json["photos"].dictionary, let photosJSON = resultsDict["photo"], let photos = photosJSON.array {
                 for photo in photos {
+                    
+                    if let ownerName = photo["ownername"].string {
+                        
+                    } else {
+                        print("Couldn't parse owner name")
+                    }
+                    
+                    
                     if let photoID = photo["id"].string,
                     let farm = photo["farm"].int,
-                    let isFriend = photo["isfriend"].int,
                     let server = photo["server"].string,
                     let secret = photo["secret"].string,
-                    let owner = photo["owner"].string,
-                    let title = photo["title"].string {
-                        returnArray.append(FlickrPhoto(photoID: photoID, farm: farm, server: server, secret: secret, isFriend: isFriend, owner: owner, title: title))
+                    let title = photo["title"].string,
+                    let descriptionDict = photo["description"].dictionary,
+                    let descriptionContent = descriptionDict["_content"],
+                    let description = descriptionContent.string,
+                    let dateString = photo["datetaken"].string,
+                    let dateTaken = dateFormatter.date(from: dateString)
+                    {
+                        
+                        let flickrPhoto: FlickrPhoto = FlickrPhoto(photoID: photoID, farm: farm, server: server, secret: secret, dateTaken: dateTaken, title: title, description: description)
+                        
+                        returnArray.append(flickrPhoto)
                     } else {
-                        print("Error could not parse response")
+                        print("Optional Chain Failed")
                     }
                 }
                 return returnArray
@@ -88,12 +107,15 @@ class FlickrNetworkManager {
     /**
      
      */
-    fileprivate func createURLForSearchTerm(_ searchTerm: String, numResults: FlickrResultsPerPage = FlickrResultsPerPage.twenty) -> URL? {
+    fileprivate func createURLForSearchTerm(_ searchTerm: String, numResults: Int = 50) -> URL? {
+        let resultsPerPage = max(20, min(numResults, 500))
+        
+        
         var urlString = "https://api.flickr.com/services/rest/?"
         
         var params = baseParametersForFlickAPI(method: .search)
         params["text"] = escapeCharacters(searchTerm)
-        params["per_page"] = FlickrResultsPerPage.twenty.rawValue
+        params["per_page"] = resultsPerPage
         
         for (key, val) in params {
             urlString += "&\(key)=\(val)"
@@ -115,21 +137,23 @@ class FlickrNetworkManager {
             "method" : method.rawValue,
             "api_key": api_key,
             "format" : "json",
-            "nojsoncallback": 1
+            "nojsoncallback": 1,
+            "extras" : escapeCharacters("owner_name, description, views, geo, date_taken")
         ]
         return params
     }
+}
+
+/// Struct to wrap search string and search results from the string
+struct FlickrSearchResults {
+    let searchTerm : String
+    let searchResults : [FlickrPhoto]
 }
 
 
 ///
 enum FlickrAPIMethods: String {
     case search = "flickr.photos.search"
+    case recent = "flickr.photos.getRecent"
 }
 
-///
-enum FlickrResultsPerPage: Int {
-    case twenty = 20
-    case forty = 40
-    case hundred = 100
-}

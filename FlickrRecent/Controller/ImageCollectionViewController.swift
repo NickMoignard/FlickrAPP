@@ -27,12 +27,6 @@ class ImageCollectionViewController: UICollectionViewController {
             if let results = results {
                 self.previousSearches.insert(results, at: 0)
                 self.collectionView?.reloadData()
-                
-                
-                for photo in results.searchResults {
-                    print(photo.title, photo.photoID)
-                }
-                
             }
             
         }
@@ -87,7 +81,7 @@ class ImageCollectionViewController: UICollectionViewController {
         pinkCell.layer.cornerRadius = 10
         
         if let url = flickrPhoto.photoURL() {
-            pinkCell.imageView.sd_setImage(with: URL(string: url.absoluteString), placeholderImage: UIImage(named: "placeholder.png"))
+            pinkCell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         } else {
             print("Image URL Error")
         }
@@ -151,10 +145,6 @@ extension ImageCollectionViewController: UITextFieldDelegate {
                 self.previousSearches.insert(results, at: 0)
                 self.collectionView?.reloadData()
                 
-   
-                for photo in results.searchResults {
-                    print(photo.title, photo.photoID)
-                }
 
             }
         }
