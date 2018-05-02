@@ -12,6 +12,7 @@ target 'FlickrRecent' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'SDWebImage'
+  pod 'ImageScrollView'
 
   target 'FlickrRecentTests' do
     inherit! :search_paths

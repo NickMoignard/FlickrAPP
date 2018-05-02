@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrResultsHeader" id="r6q-ag-yKa" customClass="HeaderCollectionReusableView" customModule="FlickrRecent" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent uploads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHg-ry-toc">
+                    <rect key="frame" x="8" y="0.0" width="128.5" height="50"/>
+                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfe-TW-1gb">
+                    <rect key="frame" x="336" y="0.0" width="29" height="50"/>
+                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="fsW-0P-wf6" firstAttribute="trailing" secondItem="zfe-TW-1gb" secondAttribute="trailing" constant="10" id="3r3-Xx-seS"/>
+                <constraint firstItem="FHg-ry-toc" firstAttribute="top" secondItem="fsW-0P-wf6" secondAttribute="top" id="JTr-OI-kKR"/>
+                <constraint firstItem="zfe-TW-1gb" firstAttribute="top" secondItem="fsW-0P-wf6" secondAttribute="top" id="TB9-kW-aJi"/>
+                <constraint firstItem="fsW-0P-wf6" firstAttribute="bottom" secondItem="FHg-ry-toc" secondAttribute="bottom" id="Z0e-Gj-ocQ"/>
+                <constraint firstItem="fsW-0P-wf6" firstAttribute="bottom" secondItem="zfe-TW-1gb" secondAttribute="bottom" id="jRh-Kh-MxA"/>
+                <constraint firstItem="FHg-ry-toc" firstAttribute="leading" secondItem="fsW-0P-wf6" secondAttribute="leading" constant="8" id="ugf-fq-Zaq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fsW-0P-wf6"/>
+            <connections>
+                <outlet property="headerTitleLabel" destination="FHg-ry-toc" id="2mX-0l-hM3"/>
+                <outlet property="numResultsLabel" destination="zfe-TW-1gb" id="bUb-sR-2mO"/>
+            </connections>
+            <point key="canvasLocation" x="-39" y="-135"/>
+        </collectionReusableView>
+    </objects>
+</document>

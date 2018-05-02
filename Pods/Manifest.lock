@@ -3,6 +3,7 @@ PODS:
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
+  - ImageScrollView (1.4)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - Alamofire
   - Crashlytics
   - Fabric
+  - ImageScrollView
   - SDWebImage
   - SwiftyJSON
 
@@ -19,9 +21,10 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  ImageScrollView: 887523542097173da75172774e9800ee473bdccd
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: c2d70ecc93a7ca49ff808de25fcdc4755958f596
+PODFILE CHECKSUM: 64cd18b7301167ff0c2eb9cd7a91671a0a810555
 
 COCOAPODS: 1.4.0

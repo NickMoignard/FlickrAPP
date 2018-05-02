@@ -20,8 +20,12 @@
 		B3EFF98B2093FFF000B27BD1 /* FlickrRecentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFF98A2093FFF000B27BD1 /* FlickrRecentTests.swift */; };
 		B3EFF9962093FFF000B27BD1 /* FlickrRecentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFF9952093FFF000B27BD1 /* FlickrRecentUITests.swift */; };
 		CA6F187AE82E4F8C3F7A8C66 /* Pods_FlickrRecentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3380DDC3E0256F6EED04E46 /* Pods_FlickrRecentUITests.framework */; };
+		D51938012099B00100B87B7B /* FlickrPhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51938002099B00100B87B7B /* FlickrPhotoDetailViewController.swift */; };
 		D5B2CCD72098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CCD62098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift */; };
 		D5B2CCD920982E7A00A24E55 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B2CCD820982E7A00A24E55 /* placeholder.png */; };
+		D5B2CCDB20997D0F00A24E55 /* CollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CCDA20997D0F00A24E55 /* CollectionFooterView.swift */; };
+		D5B2CCDD20997D4800A24E55 /* CollectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5B2CCDC20997D4800A24E55 /* CollectionFooterView.xib */; };
+		D5B2CCE020998B6500A24E55 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CCDF20998B6500A24E55 /* HeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +70,29 @@
 		B3EFF9972093FFF000B27BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE8C4A39D05CFA94E36AD383 /* Pods-FlickrRecent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrRecent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrRecent/Pods-FlickrRecent.debug.xcconfig"; sourceTree = "<group>"; };
 		C3380DDC3E0256F6EED04E46 /* Pods_FlickrRecentUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickrRecentUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D51937EE20999C8800B87B7B /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		D51937EF20999C8800B87B7B /* ProximaNova-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-BoldIt.otf"; sourceTree = "<group>"; };
+		D51937F020999C8800B87B7B /* ProximaNova-Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Extrabold.otf"; sourceTree = "<group>"; };
+		D51937F120999C8800B87B7B /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
+		D51937F220999C8800B87B7B /* ProximaNova-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-LightItalic.otf"; sourceTree = "<group>"; };
+		D51937F320999C8800B87B7B /* ProximaNova-RegItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-RegItalic.otf"; sourceTree = "<group>"; };
+		D51937F420999C8800B87B7B /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		D51937F520999C8800B87B7B /* ProximaNova-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-RegularItalic.otf"; sourceTree = "<group>"; };
+		D51937F620999C8800B87B7B /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		D51937F720999C8800B87B7B /* ProximaNova-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		D51937F820999C8800B87B7B /* ProximaNovaCond-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaCond-Light.otf"; sourceTree = "<group>"; };
+		D51937F920999C8800B87B7B /* ProximaNovaCond-LightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaCond-LightIt.otf"; sourceTree = "<group>"; };
+		D51937FA20999C8800B87B7B /* ProximaNovaCond-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaCond-Regular.otf"; sourceTree = "<group>"; };
+		D51937FB20999C8800B87B7B /* ProximaNovaCond-RegularIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaCond-RegularIt.otf"; sourceTree = "<group>"; };
+		D51937FC20999C8800B87B7B /* ProximaNovaCond-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaCond-Semibold.otf"; sourceTree = "<group>"; };
+		D51937FD20999C8800B87B7B /* ProximaNovaCond-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNovaCond-SemiboldIt.otf"; sourceTree = "<group>"; };
+		D51937FE20999C8800B87B7B /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
+		D51938002099B00100B87B7B /* FlickrPhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoDetailViewController.swift; sourceTree = "<group>"; };
 		D5B2CCD62098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5B2CCD820982E7A00A24E55 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = images/placeholder.png; sourceTree = SOURCE_ROOT; };
+		D5B2CCDA20997D0F00A24E55 /* CollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFooterView.swift; sourceTree = "<group>"; };
+		D5B2CCDC20997D4800A24E55 /* CollectionFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionFooterView.xib; sourceTree = "<group>"; };
+		D5B2CCDF20998B6500A24E55 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		F476326C6E59AFE053EA6346 /* Pods-FlickrRecentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrRecentTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrRecentTests/Pods-FlickrRecentTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +152,9 @@
 				D5B2CCD62098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift */,
 				B3EFF97E2093FFF000B27BD1 /* LaunchScreen.storyboard */,
 				B3EFF9762093FFED00B27BD1 /* Main.storyboard */,
+				D5B2CCDA20997D0F00A24E55 /* CollectionFooterView.swift */,
+				D5B2CCDC20997D4800A24E55 /* CollectionFooterView.xib */,
+				D5B2CCDF20998B6500A24E55 /* HeaderCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				B377CEB32095906E004F2242 /* ImageCollectionViewController.swift */,
+				D51938002099B00100B87B7B /* FlickrPhotoDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +198,7 @@
 				B377CEB92096C991004F2242 /* Model */,
 				B3EFF9722093FFED00B27BD1 /* AppDelegate.swift */,
 				B3EFF97C2093FFF000B27BD1 /* Assets.xcassets */,
+				D51937FF20999C8800B87B7B /* Fonts */,
 				D5B2CCD820982E7A00A24E55 /* placeholder.png */,
 				B3EFF9812093FFF000B27BD1 /* Info.plist */,
 				B3EFF9792093FFED00B27BD1 /* FlickrRecent.xcdatamodeld */,
@@ -194,6 +224,30 @@
 			path = FlickrRecentUITests;
 			sourceTree = "<group>";
 		};
+		D51937FF20999C8800B87B7B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D51937EE20999C8800B87B7B /* ProximaNova-Bold.otf */,
+				D51937EF20999C8800B87B7B /* ProximaNova-BoldIt.otf */,
+				D51937F020999C8800B87B7B /* ProximaNova-Extrabold.otf */,
+				D51937F120999C8800B87B7B /* ProximaNova-Light.otf */,
+				D51937F220999C8800B87B7B /* ProximaNova-LightItalic.otf */,
+				D51937F320999C8800B87B7B /* ProximaNova-RegItalic.otf */,
+				D51937F420999C8800B87B7B /* ProximaNova-Regular.otf */,
+				D51937F520999C8800B87B7B /* ProximaNova-RegularItalic.otf */,
+				D51937F620999C8800B87B7B /* ProximaNova-Semibold.otf */,
+				D51937F720999C8800B87B7B /* ProximaNova-SemiboldItalic.otf */,
+				D51937F820999C8800B87B7B /* ProximaNovaCond-Light.otf */,
+				D51937F920999C8800B87B7B /* ProximaNovaCond-LightIt.otf */,
+				D51937FA20999C8800B87B7B /* ProximaNovaCond-Regular.otf */,
+				D51937FB20999C8800B87B7B /* ProximaNovaCond-RegularIt.otf */,
+				D51937FC20999C8800B87B7B /* ProximaNovaCond-Semibold.otf */,
+				D51937FD20999C8800B87B7B /* ProximaNovaCond-SemiboldIt.otf */,
+				D51937FE20999C8800B87B7B /* ProximaNova-Black.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		EAE18BA8E663699BBBE41590 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +271,7 @@
 				B3EFF96D2093FFEC00B27BD1 /* Resources */,
 				0048AC965E8D58C561EB15AC /* [CP] Embed Pods Frameworks */,
 				D871E83C04198DE6056D69F4 /* [CP] Copy Pods Resources */,
+				D5B2CCDE209983F600A24E55 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -319,6 +374,7 @@
 			files = (
 				B3EFF9802093FFF000B27BD1 /* LaunchScreen.storyboard in Resources */,
 				D5B2CCD920982E7A00A24E55 /* placeholder.png in Resources */,
+				D5B2CCDD20997D4800A24E55 /* CollectionFooterView.xib in Resources */,
 				B3EFF97D2093FFF000B27BD1 /* Assets.xcassets in Resources */,
 				B3EFF9782093FFED00B27BD1 /* Main.storyboard in Resources */,
 			);
@@ -349,12 +405,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlickrRecent/Pods-FlickrRecent-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -459,6 +517,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D5B2CCDE209983F600A24E55 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 21879045719d8605b214835a6ec879d404b9fd42 3ae76a0a5948badbc365ffab63183f5dc72b16901408a0e7a9449d819a4175fb";
+		};
 		D871E83C04198DE6056D69F4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,10 +570,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B2CCE020998B6500A24E55 /* HeaderCollectionReusableView.swift in Sources */,
+				D5B2CCDB20997D0F00A24E55 /* CollectionFooterView.swift in Sources */,
 				B377CEB42095906E004F2242 /* ImageCollectionViewController.swift in Sources */,
 				B377CEB620959495004F2242 /* FlickrNetworkManager.swift in Sources */,
 				B377CEBF2096C9C9004F2242 /* FlickrPhoto.swift in Sources */,
 				B3EFF9732093FFED00B27BD1 /* AppDelegate.swift in Sources */,
+				D51938012099B00100B87B7B /* FlickrPhotoDetailViewController.swift in Sources */,
 				D5B2CCD72098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift in Sources */,
 				B3EFF97B2093FFED00B27BD1 /* FlickrRecent.xcdatamodeld in Sources */,
 			);
@@ -682,10 +756,7 @@
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -702,10 +773,7 @@
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -722,11 +790,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -744,11 +808,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -765,11 +825,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -786,11 +842,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

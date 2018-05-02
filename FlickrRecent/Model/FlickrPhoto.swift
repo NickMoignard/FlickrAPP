@@ -5,11 +5,11 @@ struct FlickrPhoto {
     let photoID: String,
         farm: Int,
         server: String,
-        secret: String,
-        isFriend: Int,
+        secret: String
+    
+    var isFriend: Int,
         ownerID: String,
         title: String,
-    
         isFamily: Int,
         description: String,
         dateTaken: Date,
@@ -22,7 +22,7 @@ struct FlickrPhoto {
     
     let networkManager = FlickrNetworkManager()
     
-    init (photoID: String, farm: Int, server: String, secret: String, dateTaken: Date, isFriend: Int = 0, ownerID: String = "", title: String = "", isFamily: Int = 0, description: String = "", ownerName: String = "", views: Int = 0, latitude: Float = 0.0, longitude: Float = 0.0, isPublic: Int = 1) {
+    init (photoID: String, farm: Int, server: String, secret: String, dateTaken: Date = Date(), isFriend: Int = 0, ownerID: String = "", title: String = "", isFamily: Int = 0, description: String = "", ownerName: String = "", views: Int = 0, latitude: Float = 0.0, longitude: Float = 0.0, isPublic: Int = 1) {
         self.photoID = photoID
         self.farm = farm
         self.server = server

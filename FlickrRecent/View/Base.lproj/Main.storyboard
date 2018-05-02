@@ -6,8 +6,22 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Light.otf">
+            <string>ProximaNova-Light</string>
+        </array>
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Image Collection View Controller-->
         <scene sceneID="aRe-fG-KgP">
@@ -16,16 +30,16 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IJa-3I-FyD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P9x-Hj-lac">
                             <size key="itemSize" width="200" height="200"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="pink" reuseIdentifier="pink" id="pQD-zy-DRU" customClass="FlickrPhotoCollectionViewCell" customModule="FlickrRecent">
-                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="50" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -37,23 +51,31 @@
                                         <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="By6-ez-dQI">
                                             <rect key="frame" x="0.0" y="170" width="200" height="30"/>
                                             <subviews>
-                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a title for an image." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wax-PK-CZW">
-                                                    <rect key="frame" x="8" y="0.0" width="184" height="30"/>
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a title for an image." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wax-PK-CZW">
+                                                    <rect key="frame" x="8" y="0.0" width="100" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="OKl-SN-u5u"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="szt-64-ycI">
+                                                    <rect key="frame" x="166" y="0.0" width="34" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="szt-64-ycI" secondAttribute="height" multiplier="17:15" id="9Ma-Vr-TQC"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="wax-PK-CZW" firstAttribute="bottom" secondItem="By6-ez-dQI" secondAttribute="bottom" id="8XU-x3-mKr"/>
-                                                <constraint firstItem="wax-PK-CZW" firstAttribute="leading" secondItem="By6-ez-dQI" secondAttribute="leading" constant="8" id="l1s-Q2-svT"/>
-                                                <constraint firstAttribute="trailing" secondItem="wax-PK-CZW" secondAttribute="trailing" constant="8" id="rys-YC-nlI"/>
-                                                <constraint firstAttribute="height" secondItem="wax-PK-CZW" secondAttribute="height" id="uD1-vg-dvA"/>
+                                                <constraint firstAttribute="trailing" secondItem="szt-64-ycI" secondAttribute="trailing" id="KRJ-zc-nIA"/>
+                                                <constraint firstItem="wax-PK-CZW" firstAttribute="leading" secondItem="By6-ez-dQI" secondAttribute="leading" constant="8" id="Ldg-mv-LWc"/>
+                                                <constraint firstAttribute="bottom" secondItem="szt-64-ycI" secondAttribute="bottom" id="aV0-Ti-aCq"/>
+                                                <constraint firstItem="wax-PK-CZW" firstAttribute="height" secondItem="By6-ez-dQI" secondAttribute="height" id="kaY-JD-Mty"/>
+                                                <constraint firstAttribute="bottom" secondItem="wax-PK-CZW" secondAttribute="bottom" id="pkx-Jt-6pU"/>
+                                                <constraint firstItem="szt-64-ycI" firstAttribute="height" secondItem="wax-PK-CZW" secondAttribute="height" id="zPg-pf-IIf"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -64,15 +86,47 @@
                                     <constraint firstAttribute="bottom" secondItem="By6-ez-dQI" secondAttribute="bottom" id="V67-L3-76N"/>
                                     <constraint firstAttribute="trailing" secondItem="By6-ez-dQI" secondAttribute="trailing" id="jBs-3w-iCA"/>
                                     <constraint firstItem="By6-ez-dQI" firstAttribute="leading" secondItem="pQD-zy-DRU" secondAttribute="leading" id="k93-11-Dd4"/>
+                                    <constraint firstItem="wax-PK-CZW" firstAttribute="width" secondItem="D55-Jh-QSd" secondAttribute="width" multiplier="0.5" id="sfc-34-Ifx"/>
                                     <constraint firstAttribute="trailing" secondItem="D55-Jh-QSd" secondAttribute="trailing" id="wi2-fa-kwL"/>
                                     <constraint firstItem="D55-Jh-QSd" firstAttribute="top" secondItem="pQD-zy-DRU" secondAttribute="top" id="x47-2F-PtR"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="D55-Jh-QSd" id="uiL-PE-nMO"/>
                                     <outlet property="titleLabel" destination="wax-PK-CZW" id="SMR-1v-KOY"/>
+                                    <segue destination="PtR-9C-M1H" kind="show" identifier="ShowFlickrPhoto" id="b0K-9z-TFs"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="FlickrResultsHeader" id="AwG-Q2-GS3" customClass="HeaderCollectionReusableView" customModule="FlickrRecent" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T1-dT-Qnm">
+                                    <rect key="frame" x="20" y="0.0" width="48.5" height="50"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NR8-36-bGf">
+                                    <rect key="frame" x="319.5" y="0.0" width="35.5" height="50"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="6T1-dT-Qnm" firstAttribute="top" secondItem="AwG-Q2-GS3" secondAttribute="top" id="3lB-jc-nXE"/>
+                                <constraint firstAttribute="bottom" secondItem="NR8-36-bGf" secondAttribute="bottom" id="FJl-Gv-djz"/>
+                                <constraint firstAttribute="bottom" secondItem="6T1-dT-Qnm" secondAttribute="bottom" id="He3-jd-IIA"/>
+                                <constraint firstAttribute="trailing" secondItem="NR8-36-bGf" secondAttribute="trailing" constant="20" id="WaB-AF-mCD"/>
+                                <constraint firstItem="NR8-36-bGf" firstAttribute="top" secondItem="AwG-Q2-GS3" secondAttribute="top" id="pLP-g7-WTr"/>
+                                <constraint firstItem="6T1-dT-Qnm" firstAttribute="leading" secondItem="AwG-Q2-GS3" secondAttribute="leading" constant="20" id="q5K-dy-ock"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="headerTitleLabel" destination="6T1-dT-Qnm" id="hzt-zJ-Oil"/>
+                                <outlet property="numResultsLabel" destination="NR8-36-bGf" id="ndL-5D-xRm"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="UET-ad-Dy8" id="ntZ-vY-0TW"/>
                             <outlet property="delegate" destination="UET-ad-Dy8" id="0S5-hf-qdV"/>
@@ -80,14 +134,14 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="kCr-O8-GEL">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" id="LX7-PU-gdm">
-                            <rect key="frame" x="67" y="7" width="241" height="30"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" id="sI1-gg-B4f">
+                            <rect key="frame" x="87.5" y="7" width="200" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="20"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             <connections>
-                                <outlet property="delegate" destination="UET-ad-Dy8" id="BIt-Ua-YXi"/>
+                                <outlet property="delegate" destination="UET-ad-Dy8" id="eUw-dW-iYE"/>
                             </connections>
                         </textField>
                     </navigationItem>
@@ -96,14 +150,61 @@
             </objects>
             <point key="canvasLocation" x="1765.5999999999999" y="148.87556221889056"/>
         </scene>
+        <!--Flickr Photo Detail View Controller-->
+        <scene sceneID="dhJ-ft-xxV">
+            <objects>
+                <viewController id="PtR-9C-M1H" customClass="FlickrPhotoDetailViewController" customModule="FlickrRecent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JeF-2x-u7r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-8N-zFb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="310"/>
+                                <subviews>
+                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HOQ-Fy-LYC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="310" id="xDi-1E-NFP"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HOQ-Fy-LYC" secondAttribute="trailing" id="K1E-hr-eML"/>
+                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="centerX" secondItem="hr7-8N-zFb" secondAttribute="centerX" id="K7w-F9-0qT"/>
+                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="top" secondItem="hr7-8N-zFb" secondAttribute="top" id="SeT-47-fdx"/>
+                                    <constraint firstAttribute="bottom" secondItem="HOQ-Fy-LYC" secondAttribute="bottom" id="bc9-Wu-Lna"/>
+                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="leading" secondItem="hr7-8N-zFb" secondAttribute="leading" id="eS1-ZE-xzy"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NVQ-2N-wdw" firstAttribute="trailing" secondItem="hr7-8N-zFb" secondAttribute="trailing" id="C7L-Dl-xQQ"/>
+                            <constraint firstItem="hr7-8N-zFb" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" id="e97-jl-9uj"/>
+                            <constraint firstItem="hr7-8N-zFb" firstAttribute="height" secondItem="JeF-2x-u7r" secondAttribute="height" multiplier="0.5" constant="-23.5" id="iPV-CK-U6X"/>
+                            <constraint firstItem="hr7-8N-zFb" firstAttribute="top" secondItem="NVQ-2N-wdw" secondAttribute="top" id="pr1-RZ-qet"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NVQ-2N-wdw"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="HOQ-Fy-LYC" id="Jd8-hD-Mf7"/>
+                        <outlet property="scrollView" destination="hr7-8N-zFb" id="05d-o3-3fT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Fb-jM-NxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2533.5999999999999" y="148.87556221889056"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rCq-Y9-Ujg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K1K-yQ-KPQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DRl-QP-BG8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="DRl-QP-BG8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -116,6 +217,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo" width="400" height="300"/>
         <image name="placeholder" width="250" height="250"/>
     </resources>
 </document>
