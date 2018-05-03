@@ -1,62 +1,54 @@
-//
-//  CollectionFooterView.swift
-//  FlickrRecent
-//
-//  Created by Nick Moignard on 2/5/18.
-//  Copyright © 2018 Nicholas Moignard. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
+/// Loading more results footer class for Main CollectionView
 class CollectionFooterView : UICollectionReusableView {
-    
-    
 
     @IBOutlet var refreshControlIndicator: UIActivityIndicatorView!
     
-    var isAnimatingFinal:Bool = false
-    var currentTransform: CGAffineTransform?
+    public var isAnimatingFinal:Bool = false
+    fileprivate var currentTransform: CGAffineTransform?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.prepareInitialAnimation()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    func setTransform(inTransform:CGAffineTransform, scaleFactor:CGFloat) {
-        if isAnimatingFinal {
-            return
-        }
+    /**
+    something
+     - Parameter inTransform:
+     - Parameter scaleFactor:
+    */
+    public func setTransform(inTransform: CGAffineTransform, scaleFactor: CGFloat) {
+        if isAnimatingFinal { return }
         self.currentTransform = inTransform
         self.refreshControlIndicator?.transform = CGAffineTransform.init(scaleX: scaleFactor, y: scaleFactor)
     }
     
-    //reset the animation
-    func prepareInitialAnimation() {
+    /// Reset loading spinner animation
+    public func prepareInitialAnimation() {
         self.isAnimatingFinal = false
         self.refreshControlIndicator?.stopAnimating()
         self.refreshControlIndicator?.transform = CGAffineTransform.init(scaleX: 0.0, y: 0.0)
     }
     
-    func startAnimate() {
+    
+    /// Start animating the loading spinner
+    public func startAnimate() {
         self.isAnimatingFinal = true
         self.refreshControlIndicator?.startAnimating()
     }
     
-    func stopAnimate() {
+    
+    /// Stop animating the loading spinner
+    public func stopAnimate() {
         self.isAnimatingFinal = false
         self.refreshControlIndicator?.stopAnimating()
     }
     
-    //final animation to display loading
-    func animateFinal() {
-        if isAnimatingFinal {
-            return
-        }
+    ///
+    public func animateFinal() {
+        if isAnimatingFinal { return }
         self.isAnimatingFinal = true
         UIView.animate(withDuration: 0.2) {
             self.refreshControlIndicator?.transform = CGAffineTransform.identity

@@ -12,6 +12,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="ProximaNova-Black.otf">
+            <string>ProximaNova-Black</string>
+        </array>
+        <array key="ProximaNova-Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
         <array key="ProximaNova-Light.otf">
             <string>ProximaNova-Light</string>
         </array>
@@ -38,7 +44,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="pink" reuseIdentifier="pink" id="pQD-zy-DRU" customClass="FlickrPhotoCollectionViewCell" customModule="FlickrRecent">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="pink" reuseIdentifier="FlickrPhotoCell" id="pQD-zy-DRU" customClass="FlickrPhotoCollectionViewCell" customModule="FlickrRecent">
                                 <rect key="frame" x="87.5" y="50" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -107,24 +113,14 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NR8-36-bGf">
-                                    <rect key="frame" x="319.5" y="0.0" width="35.5" height="50"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="15"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="6T1-dT-Qnm" firstAttribute="top" secondItem="AwG-Q2-GS3" secondAttribute="top" id="3lB-jc-nXE"/>
-                                <constraint firstAttribute="bottom" secondItem="NR8-36-bGf" secondAttribute="bottom" id="FJl-Gv-djz"/>
                                 <constraint firstAttribute="bottom" secondItem="6T1-dT-Qnm" secondAttribute="bottom" id="He3-jd-IIA"/>
-                                <constraint firstAttribute="trailing" secondItem="NR8-36-bGf" secondAttribute="trailing" constant="20" id="WaB-AF-mCD"/>
-                                <constraint firstItem="NR8-36-bGf" firstAttribute="top" secondItem="AwG-Q2-GS3" secondAttribute="top" id="pLP-g7-WTr"/>
                                 <constraint firstItem="6T1-dT-Qnm" firstAttribute="leading" secondItem="AwG-Q2-GS3" secondAttribute="leading" constant="20" id="q5K-dy-ock"/>
                             </constraints>
                             <connections>
                                 <outlet property="headerTitleLabel" destination="6T1-dT-Qnm" id="hzt-zJ-Oil"/>
-                                <outlet property="numResultsLabel" destination="NR8-36-bGf" id="ndL-5D-xRm"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -134,8 +130,8 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="kCr-O8-GEL">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" id="sI1-gg-B4f">
-                            <rect key="frame" x="87.5" y="7" width="200" height="30"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Flickr" textAlignment="center" minimumFontSize="17" id="sI1-gg-B4f">
+                            <rect key="frame" x="60" y="7" width="255" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="20"/>
@@ -159,36 +155,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-8N-zFb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="310"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="400"/>
                                 <subviews>
-                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HOQ-Fy-LYC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="310" id="xDi-1E-NFP"/>
-                                        </constraints>
+                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="HOQ-Fy-LYC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HOQ-Fy-LYC" secondAttribute="trailing" id="K1E-hr-eML"/>
-                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="centerX" secondItem="hr7-8N-zFb" secondAttribute="centerX" id="K7w-F9-0qT"/>
-                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="top" secondItem="hr7-8N-zFb" secondAttribute="top" id="SeT-47-fdx"/>
-                                    <constraint firstAttribute="bottom" secondItem="HOQ-Fy-LYC" secondAttribute="bottom" id="bc9-Wu-Lna"/>
-                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="leading" secondItem="hr7-8N-zFb" secondAttribute="leading" id="eS1-ZE-xzy"/>
+                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="top" secondItem="hr7-8N-zFb" secondAttribute="top" id="8mf-68-99d"/>
+                                    <constraint firstAttribute="trailing" secondItem="HOQ-Fy-LYC" secondAttribute="trailing" id="9Me-M4-urJ"/>
+                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="centerY" secondItem="hr7-8N-zFb" secondAttribute="centerY" id="D2t-c0-lwc"/>
+                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="centerX" secondItem="hr7-8N-zFb" secondAttribute="centerX" id="fOW-Ro-6pW"/>
+                                    <constraint firstAttribute="bottom" secondItem="HOQ-Fy-LYC" secondAttribute="bottom" id="gOa-39-SIs"/>
+                                    <constraint firstItem="HOQ-Fy-LYC" firstAttribute="leading" secondItem="hr7-8N-zFb" secondAttribute="leading" id="vPW-3o-VqN"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="PtR-9C-M1H" id="Ils-k3-9gy"/>
+                                </connections>
                             </scrollView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wed-Qm-h65">
+                                <rect key="frame" x="20" y="472" width="47.5" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldx-E9-8QZ" userLabel="Description">
+                                <rect key="frame" x="16" y="496.5" width="343" height="162.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
+                                <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iF-ah-B38">
+                                <rect key="frame" x="311" y="472" width="44" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="owner" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjd-S6-R1G">
+                                <rect key="frame" x="20" y="472" width="288" height="17.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="HEK-GY-jtY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Black" family="Proxima Nova" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NVQ-2N-wdw" firstAttribute="trailing" secondItem="hr7-8N-zFb" secondAttribute="trailing" id="C7L-Dl-xQQ"/>
+                            <constraint firstItem="Rjd-S6-R1G" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" constant="20" id="H5s-1I-DPk"/>
+                            <constraint firstItem="2iF-ah-B38" firstAttribute="top" secondItem="Rjd-S6-R1G" secondAttribute="top" id="Hvz-lP-csv"/>
+                            <constraint firstItem="ldx-E9-8QZ" firstAttribute="top" secondItem="Rjd-S6-R1G" secondAttribute="bottom" constant="7.5" id="Oix-6u-aXT"/>
+                            <constraint firstItem="NVQ-2N-wdw" firstAttribute="trailing" secondItem="ldx-E9-8QZ" secondAttribute="trailing" constant="16" id="Pbb-2x-5oE"/>
+                            <constraint firstItem="ldx-E9-8QZ" firstAttribute="top" secondItem="2iF-ah-B38" secondAttribute="bottom" constant="7.5" id="Qnz-S2-kik"/>
+                            <constraint firstItem="Rjd-S6-R1G" firstAttribute="top" secondItem="hr7-8N-zFb" secondAttribute="bottom" constant="8" id="bSj-dZ-vZD"/>
                             <constraint firstItem="hr7-8N-zFb" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" id="e97-jl-9uj"/>
-                            <constraint firstItem="hr7-8N-zFb" firstAttribute="height" secondItem="JeF-2x-u7r" secondAttribute="height" multiplier="0.5" constant="-23.5" id="iPV-CK-U6X"/>
+                            <constraint firstItem="hr7-8N-zFb" firstAttribute="height" secondItem="JeF-2x-u7r" secondAttribute="height" multiplier="0.6" id="iPV-CK-U6X"/>
+                            <constraint firstItem="NVQ-2N-wdw" firstAttribute="bottom" secondItem="ldx-E9-8QZ" secondAttribute="bottom" constant="8" id="k4r-Xr-CxG"/>
                             <constraint firstItem="hr7-8N-zFb" firstAttribute="top" secondItem="NVQ-2N-wdw" secondAttribute="top" id="pr1-RZ-qet"/>
+                            <constraint firstItem="NVQ-2N-wdw" firstAttribute="trailing" secondItem="2iF-ah-B38" secondAttribute="trailing" constant="20" id="qod-j6-1TH"/>
+                            <constraint firstItem="ldx-E9-8QZ" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" constant="16" id="tll-xy-voz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NVQ-2N-wdw"/>
                     </view>
                     <connections>
+                        <outlet property="descriptionTextView" destination="ldx-E9-8QZ" id="Jhc-eG-XZf"/>
                         <outlet property="imageView" destination="HOQ-Fy-LYC" id="Jd8-hD-Mf7"/>
+                        <outlet property="ownerLabel" destination="Rjd-S6-R1G" id="VyE-er-Vvt"/>
                         <outlet property="scrollView" destination="hr7-8N-zFb" id="05d-o3-3fT"/>
+                        <outlet property="viewsLabel" destination="2iF-ah-B38" id="xwS-RB-Q2F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Fb-jM-NxQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

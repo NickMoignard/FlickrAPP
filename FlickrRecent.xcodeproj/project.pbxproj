@@ -12,6 +12,23 @@
 		B377CEB42095906E004F2242 /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEB32095906E004F2242 /* ImageCollectionViewController.swift */; };
 		B377CEB620959495004F2242 /* FlickrNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEB520959495004F2242 /* FlickrNetworkManager.swift */; };
 		B377CEBF2096C9C9004F2242 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377CEBE2096C9C8004F2242 /* FlickrPhoto.swift */; };
+		B3BC4BE7209AB07F00B93C02 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937EE20999C8800B87B7B /* ProximaNova-Bold.otf */; };
+		B3BC4BE8209AB08200B93C02 /* ProximaNova-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937EF20999C8800B87B7B /* ProximaNova-BoldIt.otf */; };
+		B3BC4BE9209AB08400B93C02 /* ProximaNova-Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F020999C8800B87B7B /* ProximaNova-Extrabold.otf */; };
+		B3BC4BEA209AB08600B93C02 /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F120999C8800B87B7B /* ProximaNova-Light.otf */; };
+		B3BC4BEB209AB08900B93C02 /* ProximaNova-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F220999C8800B87B7B /* ProximaNova-LightItalic.otf */; };
+		B3BC4BEC209AB08A00B93C02 /* ProximaNova-RegItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F320999C8800B87B7B /* ProximaNova-RegItalic.otf */; };
+		B3BC4BED209AB08C00B93C02 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F420999C8800B87B7B /* ProximaNova-Regular.otf */; };
+		B3BC4BEE209AB08E00B93C02 /* ProximaNova-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F520999C8800B87B7B /* ProximaNova-RegularItalic.otf */; };
+		B3BC4BEF209AB09100B93C02 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F620999C8800B87B7B /* ProximaNova-Semibold.otf */; };
+		B3BC4BF0209AB09300B93C02 /* ProximaNova-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F720999C8800B87B7B /* ProximaNova-SemiboldItalic.otf */; };
+		B3BC4BF1209AB09500B93C02 /* ProximaNovaCond-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F820999C8800B87B7B /* ProximaNovaCond-Light.otf */; };
+		B3BC4BF2209AB09700B93C02 /* ProximaNovaCond-LightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937F920999C8800B87B7B /* ProximaNovaCond-LightIt.otf */; };
+		B3BC4BF3209AB09A00B93C02 /* ProximaNovaCond-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937FA20999C8800B87B7B /* ProximaNovaCond-Regular.otf */; };
+		B3BC4BF4209AB09C00B93C02 /* ProximaNovaCond-RegularIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937FB20999C8800B87B7B /* ProximaNovaCond-RegularIt.otf */; };
+		B3BC4BF5209AB09E00B93C02 /* ProximaNovaCond-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937FC20999C8800B87B7B /* ProximaNovaCond-Semibold.otf */; };
+		B3BC4BF6209AB0A000B93C02 /* ProximaNovaCond-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937FD20999C8800B87B7B /* ProximaNovaCond-SemiboldIt.otf */; };
+		B3BC4BF7209AB0A200B93C02 /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D51937FE20999C8800B87B7B /* ProximaNova-Black.otf */; };
 		B3EFF9732093FFED00B27BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFF9722093FFED00B27BD1 /* AppDelegate.swift */; };
 		B3EFF9782093FFED00B27BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EFF9762093FFED00B27BD1 /* Main.storyboard */; };
 		B3EFF97B2093FFED00B27BD1 /* FlickrRecent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3EFF9792093FFED00B27BD1 /* FlickrRecent.xcdatamodeld */; };
@@ -22,7 +39,6 @@
 		CA6F187AE82E4F8C3F7A8C66 /* Pods_FlickrRecentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3380DDC3E0256F6EED04E46 /* Pods_FlickrRecentUITests.framework */; };
 		D51938012099B00100B87B7B /* FlickrPhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51938002099B00100B87B7B /* FlickrPhotoDetailViewController.swift */; };
 		D5B2CCD72098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CCD62098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift */; };
-		D5B2CCD920982E7A00A24E55 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B2CCD820982E7A00A24E55 /* placeholder.png */; };
 		D5B2CCDB20997D0F00A24E55 /* CollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CCDA20997D0F00A24E55 /* CollectionFooterView.swift */; };
 		D5B2CCDD20997D4800A24E55 /* CollectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5B2CCDC20997D4800A24E55 /* CollectionFooterView.xib */; };
 		D5B2CCE020998B6500A24E55 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B2CCDF20998B6500A24E55 /* HeaderCollectionReusableView.swift */; };
@@ -89,7 +105,6 @@
 		D51937FE20999C8800B87B7B /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
 		D51938002099B00100B87B7B /* FlickrPhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoDetailViewController.swift; sourceTree = "<group>"; };
 		D5B2CCD62098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		D5B2CCD820982E7A00A24E55 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = images/placeholder.png; sourceTree = SOURCE_ROOT; };
 		D5B2CCDA20997D0F00A24E55 /* CollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFooterView.swift; sourceTree = "<group>"; };
 		D5B2CCDC20997D4800A24E55 /* CollectionFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionFooterView.xib; sourceTree = "<group>"; };
 		D5B2CCDF20998B6500A24E55 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -137,35 +152,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B377CEB92096C991004F2242 /* Model */ = {
+		B377CEB92096C991004F2242 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B377CEB520959495004F2242 /* FlickrNetworkManager.swift */,
 				B377CEBE2096C9C8004F2242 /* FlickrPhoto.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		B377CEBA2096C99D004F2242 /* View */ = {
+		B377CEBA2096C99D004F2242 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				D5B2CCD62098296F00A24E55 /* FlickrPhotoCollectionViewCell.swift */,
+				D5B2CCDA20997D0F00A24E55 /* CollectionFooterView.swift */,
 				B3EFF97E2093FFF000B27BD1 /* LaunchScreen.storyboard */,
 				B3EFF9762093FFED00B27BD1 /* Main.storyboard */,
-				D5B2CCDA20997D0F00A24E55 /* CollectionFooterView.swift */,
 				D5B2CCDC20997D4800A24E55 /* CollectionFooterView.xib */,
 				D5B2CCDF20998B6500A24E55 /* HeaderCollectionReusableView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		B377CEBB2096C9A2004F2242 /* Controller */ = {
+		B377CEBB2096C9A2004F2242 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B377CEB32095906E004F2242 /* ImageCollectionViewController.swift */,
 				D51938002099B00100B87B7B /* FlickrPhotoDetailViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B3EFF9662093FFEC00B27BD1 = {
@@ -193,13 +208,12 @@
 		B3EFF9712093FFED00B27BD1 /* FlickrRecent */ = {
 			isa = PBXGroup;
 			children = (
-				B377CEBB2096C9A2004F2242 /* Controller */,
-				B377CEBA2096C99D004F2242 /* View */,
-				B377CEB92096C991004F2242 /* Model */,
+				B377CEBB2096C9A2004F2242 /* Controllers */,
+				B377CEBA2096C99D004F2242 /* Views */,
+				B377CEB92096C991004F2242 /* Models */,
 				B3EFF9722093FFED00B27BD1 /* AppDelegate.swift */,
 				B3EFF97C2093FFF000B27BD1 /* Assets.xcassets */,
 				D51937FF20999C8800B87B7B /* Fonts */,
-				D5B2CCD820982E7A00A24E55 /* placeholder.png */,
 				B3EFF9812093FFF000B27BD1 /* Info.plist */,
 				B3EFF9792093FFED00B27BD1 /* FlickrRecent.xcdatamodeld */,
 			);
@@ -373,10 +387,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3EFF9802093FFF000B27BD1 /* LaunchScreen.storyboard in Resources */,
-				D5B2CCD920982E7A00A24E55 /* placeholder.png in Resources */,
 				D5B2CCDD20997D4800A24E55 /* CollectionFooterView.xib in Resources */,
+				B3BC4BE7209AB07F00B93C02 /* ProximaNova-Bold.otf in Resources */,
+				B3BC4BE8209AB08200B93C02 /* ProximaNova-BoldIt.otf in Resources */,
+				B3BC4BEE209AB08E00B93C02 /* ProximaNova-RegularItalic.otf in Resources */,
+				B3BC4BED209AB08C00B93C02 /* ProximaNova-Regular.otf in Resources */,
+				B3BC4BF6209AB0A000B93C02 /* ProximaNovaCond-SemiboldIt.otf in Resources */,
+				B3BC4BF7209AB0A200B93C02 /* ProximaNova-Black.otf in Resources */,
+				B3BC4BEA209AB08600B93C02 /* ProximaNova-Light.otf in Resources */,
 				B3EFF97D2093FFF000B27BD1 /* Assets.xcassets in Resources */,
+				B3BC4BE9209AB08400B93C02 /* ProximaNova-Extrabold.otf in Resources */,
+				B3BC4BF4209AB09C00B93C02 /* ProximaNovaCond-RegularIt.otf in Resources */,
+				B3BC4BF2209AB09700B93C02 /* ProximaNovaCond-LightIt.otf in Resources */,
 				B3EFF9782093FFED00B27BD1 /* Main.storyboard in Resources */,
+				B3BC4BF0209AB09300B93C02 /* ProximaNova-SemiboldItalic.otf in Resources */,
+				B3BC4BF3209AB09A00B93C02 /* ProximaNovaCond-Regular.otf in Resources */,
+				B3BC4BEB209AB08900B93C02 /* ProximaNova-LightItalic.otf in Resources */,
+				B3BC4BF1209AB09500B93C02 /* ProximaNovaCond-Light.otf in Resources */,
+				B3BC4BEC209AB08A00B93C02 /* ProximaNova-RegItalic.otf in Resources */,
+				B3BC4BEF209AB09100B93C02 /* ProximaNova-Semibold.otf in Resources */,
+				B3BC4BF5209AB09E00B93C02 /* ProximaNovaCond-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +786,10 @@
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -773,7 +806,10 @@
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -790,7 +826,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -808,7 +848,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -825,7 +869,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -842,7 +890,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FZ68P2768;
 				INFOPLIST_FILE = FlickrRecentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DingoCorp.FlickrRecentUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
