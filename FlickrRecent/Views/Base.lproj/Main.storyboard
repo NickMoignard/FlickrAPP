@@ -26,10 +26,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Image Collection View Controller-->
+        <!--Flickr Photo Collection View Controller-->
         <scene sceneID="aRe-fG-KgP">
             <objects>
-                <collectionViewController id="UET-ad-Dy8" customClass="ImageCollectionViewController" customModule="FlickrRecent" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="UET-ad-Dy8" customClass="FlickrPhotoCollectionViewController" customModule="FlickrRecent" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IJa-3I-FyD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

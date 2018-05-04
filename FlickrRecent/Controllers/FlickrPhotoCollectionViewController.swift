@@ -2,7 +2,7 @@ import UIKit
 import SDWebImage
 
 /// Main ViewController Class for application
-class ImageCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class FlickrPhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     // MARK: - Data Members
     fileprivate let networkManager = FlickrNetworkManager()
@@ -22,7 +22,7 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
-            #selector(ImageCollectionViewController.refreshRecentFlickrPhotos(_:)),
+            #selector(FlickrPhotoCollectionViewController.refreshRecentFlickrPhotos(_:)),
                                  for: UIControlEvents.valueChanged)
         return refreshControl
     }()
