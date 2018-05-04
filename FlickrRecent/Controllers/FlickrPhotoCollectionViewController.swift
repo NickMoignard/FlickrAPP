@@ -19,7 +19,7 @@ class FlickrPhotoCollectionViewController: UICollectionViewController, UICollect
     fileprivate var loadingNextPage = false
     
     /// Refresh Control object to update collection view with most recent photos uploaded to Flickr
-    lazy var refreshControl: UIRefreshControl = {
+    fileprivate lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
             #selector(FlickrPhotoCollectionViewController.refreshRecentFlickrPhotos(_:)),

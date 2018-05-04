@@ -9,8 +9,8 @@ import SDWebImage
 class FlickrNetworkManager {
     fileprivate let api_key = "f0d860b368002ba704051a7b742166ee"
     fileprivate let secret = "d0176a1e2ac288b5"
-    let dateFormatter = DateFormatter()
-    var lastURL: URL? = nil
+    fileprivate let dateFormatter = DateFormatter()
+    fileprivate var lastURL: URL? = nil
 
     /**
     Get images from Flickr for a given a search term
