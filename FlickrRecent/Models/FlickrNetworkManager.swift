@@ -11,75 +11,67 @@ class FlickrNetworkManager {
     fileprivate let secret = "d0176a1e2ac288b5"
     let dateFormatter = DateFormatter()
     var lastURL: URL? = nil
-    
+
     /**
-    Get images from Flickr given a search term
-     - Parameter searchTerm :"yyyy-MM-dd' 'HH:mm:ss"
-     - Parameter completion :
-     - Parameter results :
-     - Parameter error :
+    Get images from Flickr for a given a search term
+     - Parameter searchTerm : The term to search flickr with
+     - Parameter completion : Completion handler for function
+     - Parameter results : Flickr response data structure parsed from the json return by the API
     */
-    func searchFlickr(_ searchTerm: String, completion: @escaping (_ results: FlickrResponse?, _ error: NSError?) -> Void) {
+    public func searchFlickr(_ searchTerm: String, completion: @escaping (_ results: FlickrResponse?) -> Void) {
         if let url = createURL(method: .search, searchTerm: searchTerm, numResults: 100) {
             Alamofire.request(url).responseData {
                 data in
-                
                 if let response = self.parseFlickrPhotosResponse(data) {
                     self.lastURL = url
-                    completion(response, nil)
-                } else {
-                    print("Error")
-                    // TODO: - Error Handling
-                    completion(nil, NSError(domain: "DAD", code: 69, userInfo: nil) )
+                    completion(response)
                 }
             }
         } else {
-            print("eRror")
+            completion(nil)
         }
     }
     
-    // TODO: - Comment this
-    func getRecentPhotos(completion: @escaping (_ results: FlickrResponse?, _ error: NSError? ) -> Void ) {
+    /**
+    Get the most recent photos uploaded to Flickr
+     - Parameter completion : Completion handler for function
+     - Parameter results : Flickr response data structure parsed from the json return by the API
+    */
+    public func getRecentPhotos(completion: @escaping (_ results: FlickrResponse?) -> Void ) {
         if let url = createURL() {
             Alamofire.request(url).responseData {
                 data in
-                
                 if let response = self.parseFlickrPhotosResponse(data) {
                     self.lastURL = url
-                    completion(response, nil)
-                } else {
-                    // TODO: - Error handling
-                    completion(nil, NSError(domain: "Recent Photos", code: 420, userInfo: nil))
+                    completion(response)
                 }
             }
         }
     }
     
-    func getNextPageOfResults(completion: @escaping (_ results: FlickrResponse?, _ error: NSError? ) -> Void ) {
+    /**
+    Get next page of results from Flickr for the last API call
+     - Parameter completion : Completion handler for function
+     - Parameter results : Flickr response data structure parsed from the json return by the API
+    */
+    public func getNextPageOfResults(completion: @escaping (_ results: FlickrResponse?) -> Void ) {
+        // Increment page number parameter in the last url sent to flickr and call API with it
         if let oldURL = self.lastURL, let url = self.incrementPageNumberInURL(oldURL) {
             Alamofire.request(url).responseData {
                 data in
-                
                 if let response = self.parseFlickrPhotosResponse(data) {
-                    
                     self.lastURL = url
-                    completion(response, nil)
-                } else {
-                    // TODO: - Error handling
-                    completion(nil, NSError(domain: "Recent Photos", code: 420, userInfo: nil))
+                    completion(response)
                 }
             }
         } else {
-            // could not create url for next page of results
-            completion(nil, NSError(domain: "Recent Photos", code: 420, userInfo: nil))
+            // Could not create url for next page of results
+            completion(nil)
         }
     }
     
     // MARK: - HELPER METHODS
     
-    
-    
-    // TODO: - TIDY AND COMMENT WHAT ABOUT MORE THAN ONE DIGIT!!!!
     /**
     Helper method to create a URL that will get the next page of results for a given URL
      - Parameter url: The URL to get next page of results for
@@ -89,7 +81,6 @@ class FlickrNetworkManager {
         var urlStringSuffix = url.absoluteString
         var urlStringPreffix = url.absoluteString
         var returnString = ""
-        
         var pageNumberString = ""
         
         if let range = urlStringSuffix.range(of: "&page") {
@@ -99,29 +90,29 @@ class FlickrNetworkManager {
             urlStringPreffix.removeSubrange(i..<urlStringPreffix.endIndex)
             urlStringSuffix.removeSubrange(urlStringSuffix.startIndex...i)
 
-            
+            // Iterate over URL to determine number of digits in page number parameter
             for char in urlStringSuffix {
-
                 if let digit = Int(String(char)) {
                     pageNumberString += "\(digit)"
                     urlStringSuffix.remove(at: urlStringSuffix.startIndex)
                 } else {
-                    if char == "&" {
+                    if char == "&" {  // Collected each digit from page number parameter
+                        
+                        // Increment page number and put url sections back together
                         if let pageNum = Int(pageNumberString) {
-
                             returnString = urlStringPreffix + "=\(pageNum + 1)" + urlStringSuffix
                             if let returnURL = URL(string: returnString) {
                                 return returnURL
                             }
                         }
                     } else {
-                        // TODO: Throw an error
-                        // Incorrect url supplied
+                        // Page number parameter has value other than a number.
                         return nil
                     }
                 }
             }
         }
+        // Page number parameter not present in URL
         return nil
     }
     
@@ -131,81 +122,79 @@ class FlickrNetworkManager {
      - Returns: An easily interactable FlickrResponse object
     */
     fileprivate func parseFlickrPhotosResponse(_ data: DataResponse<Data>) -> FlickrResponse? {
+        // Set format for dates returned from Flick API
         dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
-        
-        var returnStatus = ""
-        var returnNumResults = 0
-        var returnPhotos: [FlickrPhoto] = []
         
         if let data = data.data {
             let json = JSON(data:data)
-            print(json)
-            if let status = json["stat"].string {
-                returnStatus = status
-            }
             
-            if let resultsDict = json["photos"].dictionary, let photosJSON = resultsDict["photo"], let photos = photosJSON.array {
-                
-                // Recents response total is an integer
-                if let totalResults = resultsDict["total"], let numResults = totalResults.int {
-                    returnNumResults = numResults
-                }
-                
-                // Search response total is a string (The Flickr API is weird)
-                if let totalJSON = resultsDict["total"], let numResultsString = totalJSON.string, let numResults = Int(numResultsString) {
-                        returnNumResults = numResults
-                }
-                
-                for photo in photos {
+            // Uncomment to view json return from API call
+            // print(json)
+            
+            if let status = json["stat"].string {
+                if status == "ok" {
+                    var returnNumResults = 0
+                    var returnPhotos: [FlickrPhoto] = []
                     
-                    var flickrPhoto: FlickrPhoto
-                    
-                    if let photoID = photo["id"].string,
-                        let farm = photo["farm"].int,
-                        let server = photo["server"].string,
-                        let secret = photo["secret"].string {
+                    if let resultsDict = json["photos"].dictionary, let photosJSON = resultsDict["photo"], let photos = photosJSON.array {
                         
-                        flickrPhoto = FlickrPhoto(photoID: photoID, farm: farm, server: server, secret: secret)
-                        
-                        
-                        if let viewsString = photo["views"].string, let views = Int(viewsString) {
-                            flickrPhoto.views = views
+                        // Get total number of photos returned from flickr
+                        // Search & Recents methods respond with different total types in the json (String for Search and Integer for Recents)
+                        if let totalResults = resultsDict["total"], let numResults = totalResults.int {
+                            returnNumResults = numResults
+                        }
+                        if let totalJSON = resultsDict["total"], let numResultsString = totalJSON.string, let numResults = Int(numResultsString) {
+                                returnNumResults = numResults
                         }
                         
-                        if let ownerName = photo["ownername"].string,
-                            let title = photo["title"].string
-                        {
-                            flickrPhoto.ownerName = ownerName
-                            flickrPhoto.title = title
+                        // Pull data from JSON
+                        for photo in photos {
+                            var flickrPhoto: FlickrPhoto
+                            
+                            // Required data for flickr  photo URL creation
+                            if let photoID = photo["id"].string,
+                                let farm = photo["farm"].int,
+                                let server = photo["server"].string,
+                                let secret = photo["secret"].string {
+                                
+                                flickrPhoto = FlickrPhoto(photoID: photoID, farm: farm, server: server, secret: secret)
+                                
+                                // Flickr photo metadata
+                                if let viewsString = photo["views"].string, let views = Int(viewsString) {
+                                    flickrPhoto.views = views
+                                }
+                                if let ownerName = photo["ownername"].string,
+                                    let title = photo["title"].string {
+                                    flickrPhoto.ownerName = ownerName
+                                    flickrPhoto.title = title
+                                }
+                                if let descriptionDict = photo["description"].dictionary,
+                                    let descriptionContent = descriptionDict["_content"],
+                                    let description = descriptionContent.string {
+                                    flickrPhoto.description = description
+                                }
+                                if let dateString = photo["datetaken"].string,
+                                    let dateTaken = dateFormatter.date(from: dateString) {
+                                    flickrPhoto.dateTaken = dateTaken
+                                }
+                                
+                                returnPhotos.append(flickrPhoto)
+                            } else {
+                                // Couldn't parse required information to download photo from flickr
+                                return nil
+                            }
                         }
-                        
-                        if let descriptionDict = photo["description"].dictionary,
-                            let descriptionContent = descriptionDict["_content"],
-                            let description = descriptionContent.string
-                        {
-                            flickrPhoto.description = description
-                        }
-                        
-                        if let dateString = photo["datetaken"].string,
-                            let dateTaken = dateFormatter.date(from: dateString)
-                        {
-                            flickrPhoto.dateTaken = dateTaken
-                        }
-                        
-                        returnPhotos.append(flickrPhoto)
-                        
-                        
-                    } else {
-                        print("Could not parse results")
-                        // FAIL LOUDLY
+                        return FlickrResponse(status: status, photos: returnPhotos, totalResults: returnNumResults)
                     }
-    
+                } else {
+                    if let code = json["code"].int, let message = json["message"].string {
+                        let flickrError =  FlickrError(code: code, message: message)
+                        return FlickrResponse(status: status, error: flickrError)
+                    }
                 }
-                print("this is ok")
-                return FlickrResponse(photos: returnPhotos, totalResults: returnNumResults, status: returnStatus)
             }
         }
-        print("Print could convert data into json")
+        // Couldn't access response data
         return nil
     }
 
@@ -246,8 +235,7 @@ class FlickrNetworkManager {
         // Set search term for a search url
         if (method == .search) {
             if (searchTerm == "") {
-                //  Search term must not be empty if searching
-                // TODO: Throw Error
+                return nil
             }
             params["text"] = escapeCharacters(searchTerm)
         }
@@ -258,19 +246,14 @@ class FlickrNetworkManager {
         }
         
         guard let url = URL(string: urlString) else {
-            // TODO: ERROR HANDLING
+            // Couldn't create url from string
             return nil
         }
         return url
     }
 }
 
-/// Data Structure to house responses from the Flickr API
-struct FlickrResponse {
-    var photos: [FlickrPhoto]?
-    var totalResults: Int?
-    var status: String
-}
+// Mark: - Enumerations
 
 /// Various callable methods supported by the Flickr API
 enum FlickrAPIMethod: String {
@@ -292,4 +275,5 @@ enum FlickrImageSize: String {
     case XXXL = "k"
     case original = "o"
 }
+
 

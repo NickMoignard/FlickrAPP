@@ -12,9 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ProximaNova-Black.otf">
-            <string>ProximaNova-Black</string>
-        </array>
         <array key="ProximaNova-Bold.otf">
             <string>ProximaNova-Bold</string>
         </array>
@@ -36,7 +33,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IJa-3I-FyD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P9x-Hj-lac">
                             <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
@@ -110,10 +107,11 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T1-dT-Qnm">
                                     <rect key="frame" x="20" y="0.0" width="48.5" height="50"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="6T1-dT-Qnm" firstAttribute="top" secondItem="AwG-Q2-GS3" secondAttribute="top" id="3lB-jc-nXE"/>
                                 <constraint firstAttribute="bottom" secondItem="6T1-dT-Qnm" secondAttribute="bottom" id="He3-jd-IIA"/>
@@ -177,48 +175,57 @@
                                 <rect key="frame" x="20" y="472" width="47.5" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldx-E9-8QZ" userLabel="Description">
-                                <rect key="frame" x="16" y="496.5" width="343" height="162.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
-                                <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iF-ah-B38">
-                                <rect key="frame" x="311" y="472" width="44" height="17"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="312" y="472" width="43" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 27th 1993" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5Y-fs-kLO">
+                                <rect key="frame" x="20" y="497" width="159" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="owner" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjd-S6-R1G">
-                                <rect key="frame" x="20" y="472" width="288" height="17.5"/>
+                                <rect key="frame" x="20" y="472" width="288" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="288" id="HEK-GY-jtY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ProximaNova-Black" family="Proxima Nova" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldx-E9-8QZ" userLabel="Description">
+                                <rect key="frame" x="16" y="522" width="343" height="137"/>
+                                <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="NVQ-2N-wdw" firstAttribute="trailing" secondItem="hr7-8N-zFb" secondAttribute="trailing" id="C7L-Dl-xQQ"/>
                             <constraint firstItem="Rjd-S6-R1G" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" constant="20" id="H5s-1I-DPk"/>
                             <constraint firstItem="2iF-ah-B38" firstAttribute="top" secondItem="Rjd-S6-R1G" secondAttribute="top" id="Hvz-lP-csv"/>
-                            <constraint firstItem="ldx-E9-8QZ" firstAttribute="top" secondItem="Rjd-S6-R1G" secondAttribute="bottom" constant="7.5" id="Oix-6u-aXT"/>
                             <constraint firstItem="NVQ-2N-wdw" firstAttribute="trailing" secondItem="ldx-E9-8QZ" secondAttribute="trailing" constant="16" id="Pbb-2x-5oE"/>
-                            <constraint firstItem="ldx-E9-8QZ" firstAttribute="top" secondItem="2iF-ah-B38" secondAttribute="bottom" constant="7.5" id="Qnz-S2-kik"/>
+                            <constraint firstItem="ldx-E9-8QZ" firstAttribute="top" secondItem="U5Y-fs-kLO" secondAttribute="bottom" constant="8" id="ZZv-iF-C4P"/>
                             <constraint firstItem="Rjd-S6-R1G" firstAttribute="top" secondItem="hr7-8N-zFb" secondAttribute="bottom" constant="8" id="bSj-dZ-vZD"/>
                             <constraint firstItem="hr7-8N-zFb" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" id="e97-jl-9uj"/>
                             <constraint firstItem="hr7-8N-zFb" firstAttribute="height" secondItem="JeF-2x-u7r" secondAttribute="height" multiplier="0.6" id="iPV-CK-U6X"/>
                             <constraint firstItem="NVQ-2N-wdw" firstAttribute="bottom" secondItem="ldx-E9-8QZ" secondAttribute="bottom" constant="8" id="k4r-Xr-CxG"/>
                             <constraint firstItem="hr7-8N-zFb" firstAttribute="top" secondItem="NVQ-2N-wdw" secondAttribute="top" id="pr1-RZ-qet"/>
+                            <constraint firstItem="U5Y-fs-kLO" firstAttribute="top" secondItem="Rjd-S6-R1G" secondAttribute="bottom" constant="8" id="qWY-vj-vGi"/>
+                            <constraint firstItem="U5Y-fs-kLO" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" constant="20" id="qal-tR-njR"/>
                             <constraint firstItem="NVQ-2N-wdw" firstAttribute="trailing" secondItem="2iF-ah-B38" secondAttribute="trailing" constant="20" id="qod-j6-1TH"/>
                             <constraint firstItem="ldx-E9-8QZ" firstAttribute="leading" secondItem="NVQ-2N-wdw" secondAttribute="leading" constant="16" id="tll-xy-voz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NVQ-2N-wdw"/>
                     </view>
                     <connections>
+                        <outlet property="dateTakenLabel" destination="U5Y-fs-kLO" id="htW-uv-3PU"/>
                         <outlet property="descriptionTextView" destination="ldx-E9-8QZ" id="Jhc-eG-XZf"/>
                         <outlet property="imageView" destination="HOQ-Fy-LYC" id="Jd8-hD-Mf7"/>
                         <outlet property="ownerLabel" destination="Rjd-S6-R1G" id="VyE-er-Vvt"/>

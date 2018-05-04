@@ -18,6 +18,15 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     fileprivate var headerTitle: String = "Total results"
     fileprivate var loadingNextPage = false
     
+    /// Refresh Control object to update collection view with most recent photos uploaded to Flickr
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(ImageCollectionViewController.refreshRecentFlickrPhotos(_:)),
+                                 for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
+    
     // MARK: - View Controller Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +34,28 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
         self.collectionView?.addSubview(refreshControl)
         
         if let collectionView = self.collectionView {
-                
             collectionView.register(UINib(nibName: "CollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerViewReuseIdentifier)
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        // Remove previous search results and extraneous photos from view
+        if var currentResponse = self.previousFlickrResponses.first {
+            if currentResponse.photos != nil {
+                let numToRemove = currentResponse.photos!.count - 20
+                currentResponse.photos!.removeFirst(numToRemove)
+            }
+            
+            self.previousFlickrResponses.removeAll()
+            self.previousFlickrResponses.append(currentResponse)
+        }
+        self.reload()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Pass Flickr Photo to destination view controller
         if segue.identifier == "ShowFlickrPhoto" {
             let vc = segue.destination as! FlickrPhotoDetailViewController
             let cell = sender as! FlickrPhotoCollectionViewCell
@@ -40,20 +65,10 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
     
-    // MARK: - Refresh Control
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:
-            #selector(ImageCollectionViewController.refreshRecentFlickrPhotos(_:)),
-                                 for: UIControlEvents.valueChanged)
-        
-        return refreshControl
-    }()
     
     
-    // MARK: - Search Flickr
-    // TODO: - Refactor & Comment
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    // Search Flickr for a given search term if user presses enter inside the search bar text field
         
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         textField.placeholder = ""
@@ -61,62 +76,61 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
         activityIndicator.frame = textField.bounds
         activityIndicator.startAnimating()
         
+        // Search Flickr
         networkManager.searchFlickr(textField.text!) {
-            response, error in
+            response in
             activityIndicator.removeFromSuperview()
-            textField.placeholder = "Search"
-            if let error = error {
-                print("error encounted \(error)")
-                return
-            }
+            textField.placeholder = "Search Flickr"
             
-            if let response = response {
-                
-                self.previousFlickrResponses.insert(response, at: 0)
-                self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
+            if response != nil {
+                // Fill collection view with response data
+                if response!.error == nil {
+                    self.previousFlickrResponses.insert(response!, at: 0)
+                    self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
                                                   at: .top,
                                                   animated: true)
-                self.reload()
+                   self.reload()
+                } else {
+                    print("Error Searching Flickr")
+                    print("Code: \(response!.error!.code), Message: \(response!.error!.message)")
+                }
             }
         }
+        // Finished searching. so reset
         textField.text = nil
-        
         textField.resignFirstResponder()
         return true
     }
 
     // MARK: - Collection View Methods
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if previousFlickrResponses.count >= 1 {
+        if previousFlickrResponses[0].photos != nil {
             return previousFlickrResponses[0].photos!.count
         } else {
             return 0
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Setup Flickr Photo Cell
+        
         let flickrPhoto = previousFlickrResponses[0].photos![indexPath.row]
         let flickrphotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrPhotoCollectionViewCell
         
-        // Setup Cell
         flickrphotoCell.backgroundColor = UIColor.white
         flickrphotoCell.layer.cornerRadius = 10
         flickrphotoCell.titleLabel.text = flickrPhoto.ownerName
+        
         if let url = flickrPhoto.photoURL() {
             flickrphotoCell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
-        } else {
-            // TODO: Handle Error
-            print("Image URL Error")
         }
         
         return flickrphotoCell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // Set the size of collection view cells
@@ -133,6 +147,8 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
+    // MARK: - Loading Activity Indicator Implementation
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let heightOfFooter: CGFloat = 55
         if self.loadingNextPage {
@@ -142,16 +158,18 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        // Setup Header and Footer for CollectionView
+        
         if kind == UICollectionElementKindSectionFooter {
+            // User is trying to load more images
             let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewReuseIdentifier, for: indexPath) as! CollectionFooterView
             self.footerView = aFooterView
             self.footerView?.backgroundColor = UIColor.clear
             return aFooterView
         } else {
-            // Setup the header for the CollectionView
+            // Set information inside the header
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerViewReuseIdentifier, for: indexPath) as! HeaderCollectionReusableView
             headerView.headerTitleLabel.text = "Total results: \(numResults)"
-            
             return headerView
         }
     }
@@ -168,9 +186,10 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
     
-    // TODO: Refactor and Comment
-    // compute the scroll value and play witht the threshold to get desired effect
+    
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Check if user is trying view more images
         let THRESHOLD: Float = 50.0
         
         let contentOffset = scrollView.contentOffset.y;
@@ -191,7 +210,7 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
 
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // Check if user is trying to load more images
+        // Check if user pulled hard enough to trigger loading new images
         let DISTANCE_FROM_BOTTOM: CGFloat = 35.0
         
         let contentOffset = scrollView.contentOffset.y
@@ -230,15 +249,17 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     fileprivate func updateRecentPhotos() {
         print("Getting recents")
         networkManager.getRecentPhotos {
-            results, error in
-            if let results = results {
-                self.previousFlickrResponses.insert(results, at: 0)
-                self.reload()
-            } else {
-                print("Error getting recent photos")
+            response in
+            if response != nil {
+                if response!.error == nil {
+                    self.previousFlickrResponses.insert(response!, at: 0)
+                    self.reload()
+                } else {
+                    print("Error getting recent photos from Flickr")
+                    print("Code: \(response!.error!.code), Message: \(response!.error!.message)")
+                }
             }
         }
-        // TODO: - Error Handling
     }
     
     /// Helper function to reload the Collection View and update header information
@@ -252,15 +273,20 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     /// Helper function to download the next page of results for current Flickr API query
     fileprivate func loadNextPageOfFlickrResults() {
         networkManager.getNextPageOfResults {
-            response, error in
-            if let response = response, let responsePhotos = response.photos {
-                for photo in responsePhotos {
-                    self.previousFlickrResponses[0].photos!.append(photo)
+            response in
+            if response != nil {
+                if response!.error == nil {
+                    if let photos = response!.photos {
+                        for photo in photos {
+                            self.previousFlickrResponses[0].photos!.append(photo)
+                        }
+                        self.reload()
+                        self.loadingNextPage =  false
+                    }
+                } else {
+                    print("Error getting next page of photos from Flickr")
+                    print("Code: \(response!.error!.code), Message: \(response!.error!.message)")
                 }
-                self.collectionView?.reloadData()
-                self.loadingNextPage =  false
-            } else {
-                // TODO: Handle Error
             }
         }
     }

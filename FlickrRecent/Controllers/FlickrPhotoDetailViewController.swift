@@ -10,6 +10,7 @@ class FlickrPhotoDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet var dateTakenLabel: UILabel!
     
     
     // MARK: - View Controller Methods
@@ -35,15 +36,33 @@ class FlickrPhotoDetailViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Helper Methods
     fileprivate func setupView(_ photo: FlickrPhoto) {
+        
+        
         if let url = photo.photoURL(.L) {
             self.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }
         
         self.ownerLabel.text = photo.ownerName
-        self.descriptionTextView.text = photo.description
-        self.viewsLabel.text = "\(photo.views)"
+        
+        if photo.description != "" {
+            self.descriptionTextView.text = photo.description
+        } else {
+            self.descriptionTextView.textColor = UIColor.lightText
+            self.descriptionTextView.text = "No description..."
+        }
+        
+        if let dateString = photo.dateTakenString() {
+            self.dateTakenLabel.text = dateString
+        } else {
+            self.dateTakenLabel.textColor = UIColor.lightText
+            self.dateTakenLabel.text = "No date of capture for image..."
+        }
+
+
+        self.viewsLabel.text = "\(photo.views) views"
         self.navigationItem.title = photo.title
         
     }
+    
 }
 

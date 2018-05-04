@@ -14,11 +14,6 @@ class CollectionFooterView : UICollectionReusableView {
         self.prepareInitialAnimation()
     }
     
-    /**
-    something
-     - Parameter inTransform:
-     - Parameter scaleFactor:
-    */
     public func setTransform(inTransform: CGAffineTransform, scaleFactor: CGFloat) {
         if isAnimatingFinal { return }
         self.currentTransform = inTransform

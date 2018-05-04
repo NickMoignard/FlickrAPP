@@ -14,7 +14,7 @@ struct FlickrPhoto {
         title: String,
         isFamily: Int,
         description: String,
-        dateTaken: Date,
+        dateTaken: Date?,
         ownerName: String,
         views: Int,
         latitude: Float,
@@ -22,7 +22,7 @@ struct FlickrPhoto {
         isPublic: Int
     
     // MARK: Methods
-    init (photoID: String, farm: Int, server: String, secret: String, dateTaken: Date = Date(), isFriend: Int = 0, ownerID: String = "", title: String = "", isFamily: Int = 0, description: String = "", ownerName: String = "", views: Int = 0, latitude: Float = 0.0, longitude: Float = 0.0, isPublic: Int = 1) {
+    init (photoID: String, farm: Int, server: String, secret: String, dateTaken: Date? = nil, isFriend: Int = 0, ownerID: String = "", title: String = "", isFamily: Int = 0, description: String = "", ownerName: String = "", views: Int = 0, latitude: Float = 0.0, longitude: Float = 0.0, isPublic: Int = 1) {
         self.photoID = photoID
         self.farm = farm
         self.server = server
@@ -50,5 +50,22 @@ struct FlickrPhoto {
             return url
         }
         return nil
+    }
+    
+    
+    /**
+    Convert the Flickr Photo's date taken object to a string for displaying to a user
+     - Returns: the photos date of capture as a string
+    */
+    public func dateTakenString() -> String? {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        
+        if let dateTaken = dateTaken {
+            return formatter.string(from: dateTaken)
+        } else {
+            return nil
+        }
+        
     }
 }
