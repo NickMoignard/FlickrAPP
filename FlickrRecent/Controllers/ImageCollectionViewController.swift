@@ -44,20 +44,13 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
-            #selector(ImageCollectionViewController.handleRefresh(_:)),
+            #selector(ImageCollectionViewController.refreshRecentFlickrPhotos(_:)),
                                  for: UIControlEvents.valueChanged)
         
         return refreshControl
     }()
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        
-        self.updateRecentPhotos()
-        refreshControl.endRefreshing()
-    }
     
-
-
     // MARK: - Search Flickr
     // TODO: - Refactor & Comment
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -174,36 +167,43 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
             self.footerView?.stopAnimate()
         }
     }
+    
     // TODO: Refactor and Comment
-    //compute the scroll value and play witht the threshold to get desired effect
+    // compute the scroll value and play witht the threshold to get desired effect
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let threshold   = 50.0 ;
+        let THRESHOLD: Float = 50.0
+        
         let contentOffset = scrollView.contentOffset.y;
         let contentHeight = scrollView.contentSize.height;
-        let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
-        var triggerThreshold  = Float((diffHeight - frameHeight))/Float(threshold);
-        triggerThreshold   =  min(triggerThreshold, 0.0)
-        let pullRatio  = min(fabs(triggerThreshold),1.0);
-        self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
-        if pullRatio >= 1 {
+        
+        let heightDelta = contentHeight - contentOffset;
+        let triggerThreshold  = min( (Float( heightDelta - frameHeight) / THRESHOLD) , 0.0)
+        let viewPulled = min(fabs(triggerThreshold),1.0);
+        
+        self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(viewPulled))
+        
+        if viewPulled >= 1 {
             self.footerView?.animateFinal()
         }
-        
     }
     
-    //compute the offset and call the load method
+
+    
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // Check if user is trying to load more images
         let DISTANCE_FROM_BOTTOM: CGFloat = 35.0
-        let contentOffset = scrollView.contentOffset.y;
-        let contentHeight = scrollView.contentSize.height;
-        let diffHeight = contentHeight - contentOffset;
-        let frameHeight = scrollView.bounds.size.height;
-        let pullHeight  = fabs(diffHeight - frameHeight);
-        if pullHeight <= DISTANCE_FROM_BOTTOM
-        {
+        
+        let contentOffset = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let frameHeight = scrollView.bounds.size.height
+        
+        let heightDelta = contentHeight - contentOffset
+        let pullHeight  = fabs(heightDelta - frameHeight)
+        
+        if pullHeight <= DISTANCE_FROM_BOTTOM {
+            // User is trying to load more images, so load them
             if (self.footerView?.isAnimatingFinal)! {
-                print("load more trigger")
                 self.loadingNextPage = true
                 self.footerView?.startAnimate()
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer:Timer) in
@@ -213,12 +213,20 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
 
+
     // MARK: - Helper Methods
     
-    fileprivate func setNumberResultsLabel() {
+    /**
+     Function to be called when user pulls down to refresh
+     - Parameter refreshControl: refresh control to initiate CollectionView refresh
+     */
+    @objc func refreshRecentFlickrPhotos(_ refreshControl: UIRefreshControl) {
         
+        self.updateRecentPhotos()
+        refreshControl.endRefreshing()
     }
     
+    /// Helper Function to download recent photos uploaded to Flickr
     fileprivate func updateRecentPhotos() {
         print("Getting recents")
         networkManager.getRecentPhotos {
@@ -233,13 +241,15 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
         // TODO: - Error Handling
     }
     
+    /// Helper function to reload the Collection View and update header information
     fileprivate func reload() {
         self.collectionView?.reloadData()
         if let total = self.previousFlickrResponses[0].totalResults {
             self.numResults = total
         }
     }
-    
+
+    /// Helper function to download the next page of results for current Flickr API query
     fileprivate func loadNextPageOfFlickrResults() {
         networkManager.getNextPageOfResults {
             response, error in
@@ -254,6 +264,7 @@ class ImageCollectionViewController: UICollectionViewController, UICollectionVie
             }
         }
     }
+
 }
 
 
