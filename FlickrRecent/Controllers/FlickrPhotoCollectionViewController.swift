@@ -108,8 +108,8 @@ class FlickrPhotoCollectionViewController: UICollectionViewController, UICollect
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if previousFlickrResponses[0].photos != nil {
-            return previousFlickrResponses[0].photos!.count
+        if let response = previousFlickrResponses.first, let photos = response.photos {
+            return photos.count
         } else {
             return 0
         }
